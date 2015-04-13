@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><main>
+    <update_time time="25"/>
+    <threads count="3"/>
+    <dashboard>
+        <task attempts="82" attempts_ok="82" id="0" name="google" time="1428958245113" url="http://google.com:80/"/>
+        
+        <task attempts="83" attempts_ok="83" id="3" name="mail.ru" time="1428958245124" url="http://mail.ru:80"/>
+        <task attempts="84" attempts_ok="84" id="4" name="mail.ru" time="1428958245113" url="http://mail.ru:80"/>
+    <task attempts="52" attempts_ok="52" id="5" name="yandex" time="1428958245123" url="http://yandex.ru:80"/>
+  </dashboard>
+</main>
