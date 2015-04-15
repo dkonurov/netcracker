@@ -199,43 +199,53 @@ public class WorkerXml {
         if (node == null) {
             return null;
         }
+        boolean returnNull = true;
         NamedNodeMap map = node.getAttributes();
         Task task = new Task();
         Node id = map.getNamedItem(ID);
         if (id != null) {
             if (id.getTextContent() != null) {
+                returnNull = false;
                 task.setId(Integer.parseInt(id.getTextContent()));
             }
         }
         Node url = map.getNamedItem(URL);
         if (url != null) {
             if (url.getTextContent() != null) {
+                returnNull = false;
                 task.setUrl(url.getTextContent());
             }
         }
         Node name = map.getNamedItem(NAME);
         if (name != null) {
             if (name.getTextContent() != null) {
+                returnNull = false;
                 task.setName(name.getTextContent());
             }
         }
         Node attempts = map.getNamedItem(ATTEMPTS);
         if (attempts != null && attempts.getTextContent() != null) {
+            returnNull = false;
             task.setAttempts(Long.parseLong(attempts.getTextContent()));
         } else {
             task.setAttempts(0L);
         }
         Node attemptsOk = map.getNamedItem(ATTEMPTS_OK);
         if (attemptsOk != null && attemptsOk.getTextContent() != null) {
+            returnNull = false;
             task.setAttemptsOk(Long.parseLong(attemptsOk.getTextContent()));
         } else {
             task.setAttemptsOk(0L);
         }
         Node time = map.getNamedItem(TIME);
         if (time != null && time.getTextContent() != null) {
+            returnNull = false;
             task.setTime(Long.parseLong(time.getTextContent()));
         } else {
             task.setTime(0L);
+        }
+        if (returnNull) {
+            return null;
         }
         return task;
     }

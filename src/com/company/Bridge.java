@@ -11,6 +11,7 @@ import java.util.List;
 public class Bridge implements Runnable {
 
     public static final int TIME_OUT = 10;
+    public static final int SECOND = 1000;
 
     private volatile WorkerXml workerXml;
 
@@ -21,6 +22,7 @@ public class Bridge implements Runnable {
     @Override
     public void run() {
         int count = workerXml.getCountThread();
+        int timeUpdate = workerXml.getTimeUpdate();
         Thread[] threads = new Thread[count];
         List<Task> taskList = workerXml.getTasks();
         if (taskList == null) {
@@ -53,7 +55,7 @@ public class Bridge implements Runnable {
             }
         }
         try {
-            Thread.sleep(workerXml.getTimeUpdate() * 1000);
+            Thread.sleep(timeUpdate * SECOND);
             run();
         } catch (InterruptedException e) {
             return;
