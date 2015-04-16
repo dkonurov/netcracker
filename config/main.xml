@@ -2,11 +2,13 @@
     <update_time time="25"/>
     <threads count="3"/>
     <dashboard>
-        <task attempts="305" attempts_ok="290" id="0" name="google" time="1429078320475" url="http://google.com:80/"/>
         
-        <task attempts="306" attempts_ok="271" id="3" name="mail.ru" time="1429078320313" url="http://mail.ru:80"/>
-        <task attempts="307" attempts_ok="272" id="4" name="mail.ru" time="1429078320305" url="http://mail.ru:80"/>
+        
+        
+        
     
-  <task attempts="71" attempts_ok="56" id="5" name="yandex" time="1429078320510" url="http://yandex.ru:80"/>
+  
+  <task attempts="177" attempts_ok="177" id="0" name="google" time="1429133851432" url="http://google.com:80"/>
+  <task attempts="30" attempts_ok="30" id="1" name="yandex" time="1429133851450" url="http://yandex.ru:80"/>
   </dashboard>
 </main>

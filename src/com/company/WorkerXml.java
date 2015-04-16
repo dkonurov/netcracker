@@ -147,8 +147,14 @@ public class WorkerXml {
         Element nodeTask = parseToNode(task);
         Node dashboard = getDashboard();
         NodeList nodeList = doc.getElementsByTagName(TASK);
-        Node node = nodeList.item(nodeList.getLength() - 1);
-        Integer lastId = Integer.valueOf(node.getAttributes().getNamedItem(ID).getTextContent());
+        Integer lastId;
+        if (nodeList != null && nodeList.getLength() >= 1) {
+            Node node = nodeList.item(nodeList.getLength() - 1);
+            lastId = Integer.valueOf(node.getAttributes().getNamedItem(ID).getTextContent());
+        } else {
+            lastId = -1;
+        }
+
         lastId++;
         nodeTask.setAttribute(ID, String.valueOf(lastId));
         dashboard.appendChild(nodeTask);

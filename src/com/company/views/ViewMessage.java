@@ -10,7 +10,7 @@ public class ViewMessage extends View {
         list = new ArrayList<String>();
     }
 
-    public void addMessage(String message) {
+    private void addMessage(String message) {
         list.add(message);
     }
 
@@ -25,6 +25,13 @@ public class ViewMessage extends View {
             for (String string : list) {
                 System.out.println(string);
             }
+        }
+    }
+
+    @Override
+    public void add(Object object) {
+        if (object instanceof String) {
+            addMessage((String) object);
         }
     }
 }

@@ -13,4 +13,6 @@ abstract public class View  {
     }
 
     abstract public void print();
+
+    abstract public void add(Object object);
 }

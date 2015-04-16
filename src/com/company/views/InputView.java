@@ -41,89 +41,109 @@ public class InputView {
         switch (commandsId) {
             case YES_ID:
                 if (controllerCommands.isPrepareExit()) {
-                    controllerCommands.exitYes();
+                    controllerCommands.exitYes(new ViewMessage());
                 }
                 break;
             case NO_ID:
-                controllerCommands.exitNo();
+                controllerCommands.exitNo(new ViewMessage());
                 break;
             case EXIT_ID:
-                controllerCommands.exit();
+                controllerCommands.exit(new ViewMessage());
                 break;
             case HELP_ID:
-                controllerCommands.help();
+                controllerCommands.help(new ViewMessage());
                 break;
             case ADD_ID:
                 if (!validateAdd(splitCommands)) {
                     return;
                 }
-                controllerCommands.addTask(splitCommands);
+                controllerCommands.addTask(splitCommands, new ViewMessage());
                 break;
             case SHOW_ID:
-                controllerCommands.show();
+                controllerCommands.show(new ViewTable());
                 break;
             case GET_ID:
                 if (!validateGet(splitCommands)) {
                     return;
                 }
-                controllerCommands.getById(splitCommands);
+                controllerCommands.getById(splitCommands, new ViewTable());
                 break;
             case SAVE_ID:
-                controllerCommands.save();
+                controllerCommands.save(new ViewMessage());
                 break;
             case DELETE_ID:
                 if (!validateDelete(splitCommands)) {
                     return;
                 }
-                controllerCommands.deleteTask(splitCommands);
+                controllerCommands.deleteTask(splitCommands, new ViewMessage());
                 break;
             default:
-                controllerCommands.help();
+                controllerCommands.help(new ViewMessage());
         }
     }
 
+    /**
+     * validate before delete task
+     * @param splitCommands String[]
+     * @return boolean validate
+     */
     private boolean validateDelete(String[] splitCommands) {
         boolean validate = validateNotEmpty(splitCommands, 2);
         if (!validate) {
-            controllerCommands.deleteHelp();
+            controllerCommands.deleteHelp(new ViewMessage());
             return false;
         }
         try {
             Integer id = Integer.parseInt(splitCommands[1]);
         } catch (NumberFormatException e) {
             validate = false;
-            controllerCommands.errorId();
+            controllerCommands.errorId( new ViewMessage());
         }
         return validate;
     }
 
+    /**
+     * validate before get information
+     * @param splitCommands String[]
+     * @return boolean validate
+     */
     private boolean validateGet(String[] splitCommands) {
         boolean validate = validateNotEmpty(splitCommands, 2);
         if (!validate) {
-            controllerCommands.getHelp();
+            controllerCommands.getHelp( new ViewMessage());
             return false;
         }
         try {
             Integer id = Integer.parseInt(splitCommands[1]);
         } catch (NumberFormatException e) {
             validate = false;
-            controllerCommands.errorId();
+            controllerCommands.errorId(new ViewMessage());
         }
         return validate;
     }
 
+    /**
+     * validate before add task
+     * @param splitCommands String[]
+     * @return boolean validate
+     */
     private boolean validateAdd(String[] splitCommands) {
         if (!validateNotEmpty(splitCommands, 3)) {
-            controllerCommands.addHelp();
+            controllerCommands.addHelp(new ViewMessage());
             return false;
         }
         if (!validateUrl(splitCommands)) {
-            controllerCommands.addErrorUrl();
+            controllerCommands.addErrorUrl(new ViewMessage());
             return false;
         }
         return true;
     }
 
+    /**
+     * validate url
+     * @param splitCommands String[]
+     * @return boolean validate
+     */
     private boolean validateUrl(String[] splitCommands) {
         String url = splitCommands[1];
         Pattern urlPattern = Pattern.compile("((https?|ftp|telnet)?://)?([a-zA-Z0-9-]{1,128}\\.)+([a-zA-Z]{2,4})+(:[0-9]{0,5})?(/[a-zA-Z0-9.,_@%&?+=\\~/#-]*)?");
@@ -135,6 +155,12 @@ public class InputView {
         return validate;
     }
 
+    /**
+     * validate for empty element
+     * @param commands String[]
+     * @param count int
+     * @return boolean validate
+     */
     private boolean validateNotEmpty(String[] commands, int count) {
         boolean validate = true;
         if (commands.length != count) {

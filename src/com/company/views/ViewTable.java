@@ -19,17 +19,17 @@ public class ViewTable extends View {
         builder = new StringBuilder();
     }
 
-    public void addTask(Task task) {
+    private void addTask(Task task) {
         if (task != null) {
             taskList.add(task);
         }
     }
 
-    public void addTask(List<Task> tasks) {
+    private void addTask(List<Task> tasks) {
         taskList.addAll(tasks);
     }
 
-    public void addString(String string) {
+    private void addString(String string) {
         stringList.add(string);
     }
 
@@ -72,6 +72,17 @@ public class ViewTable extends View {
             for (String string : stringList) {
                 System.out.println(string);
             }
+        }
+    }
+
+    @Override
+    public void add(Object object) {
+        if (object instanceof  String) {
+            addString((String) object);
+        } else if (object instanceof Task) {
+            addTask((Task) object);
+        } else {
+            addTask((List<Task>) object);
         }
     }
 
