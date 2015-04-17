@@ -57,8 +57,6 @@ public class Bridge implements Runnable {
         try {
             Thread.sleep(timeUpdate * SECOND);
             run();
-        } catch (InterruptedException e) {
-            return;
-        }
+        } catch (InterruptedException ignored) {}
     }
 }

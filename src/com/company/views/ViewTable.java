@@ -1,5 +1,6 @@
 package com.company.views;
 
+import com.company.models.Messages;
 import com.company.models.Task;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class ViewTable extends View {
                 }
             }
         } else {
-            formatter.format("sorry not found\n");
+            formatter.format(Messages.EMPTY);
         }
         builder.append(formatter.toString());
         createFooterTable();
@@ -77,6 +78,9 @@ public class ViewTable extends View {
 
     @Override
     public void add(Object object) {
+        if (object == null) {
+            return;
+        }
         if (object instanceof  String) {
             addString((String) object);
         } else if (object instanceof Task) {

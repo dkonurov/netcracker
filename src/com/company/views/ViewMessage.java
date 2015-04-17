@@ -30,6 +30,9 @@ public class ViewMessage extends View {
 
     @Override
     public void add(Object object) {
+        if (object == null) {
+            return;
+        }
         if (object instanceof String) {
             addMessage((String) object);
         }

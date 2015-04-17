@@ -20,4 +20,5 @@ public class Messages {
     public static final String EMPTY_INPUT = "sorry empty string";
     public static final String GET_HELP = "get\n\t-id";
     public static final String DELETE_HELP = "delete\n\t-id";
+    public static final String EMPTY = "empty\n";
 }

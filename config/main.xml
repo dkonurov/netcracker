@@ -8,7 +8,11 @@
         
     
   
-  <task attempts="177" attempts_ok="177" id="0" name="google" time="1429133851432" url="http://google.com:80"/>
-  <task attempts="30" attempts_ok="30" id="1" name="yandex" time="1429133851450" url="http://yandex.ru:80"/>
+  
+  
+  <task attempts="16" attempts_ok="16" id="0" name="yandex" time="1429301523629" url="http://yandex.ru:80/"/>
+    <task attempts="15" attempts_ok="15" id="1" name="google" time="1429301523605" url="http://google.com:80/"/>
+    <task attempts="11" attempts_ok="11" id="2" name="index" time="1429301523535" url="http://index.ru:80/"/>
+    <task attempts="7" attempts_ok="0" id="3" name="smmshark" time="1429301502534" url="http://smmshark.ru:80/"/>
   </dashboard>
 </main>
